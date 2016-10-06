@@ -1,8 +1,29 @@
 package principal;
+import java.util.*;
 
 public class Main {
 	public static void main(String[] args) {
-		Cidade cidade = new Cidade(0, 0);
+		
+		
+		Scanner in = new Scanner(System.in);
+		int posicao_x;
+		int posicao_y;
+		
+		System.out.println("Comece a inserir as cidades");
+		
+		while(in.hasNextInt()){
+			//System.out.println("Insira posição X");
+			posicao_x = in.nextInt();
+			//System.out.println("Insira posição Y");
+			posicao_y = in.nextInt();
+			Cidade cidade = new Cidade(posicao_x,posicao_y);
+			CatalogoCidades.adicionarCidade(cidade);
+			System.out.println(cidade.escrevePosicao());
+		}
+		
+		in.close();
+		
+		/*Cidade cidade = new Cidade(0, 0);
         CatalogoCidades.adicionarCidade(cidade);
         Cidade cidade2 = new Cidade(10, 150);
         CatalogoCidades.adicionarCidade(cidade2);
@@ -42,6 +63,7 @@ public class Main {
         CatalogoCidades.adicionarCidade(cidade19);
         Cidade cidade20 = new Cidade(190, 80);
         CatalogoCidades.adicionarCidade(cidade20);
+		*/
 		
 		Populacao pop = new Populacao(50);
 		System.out.println("Distancia inicial: " + pop.maxFitness().distanciaTour());
